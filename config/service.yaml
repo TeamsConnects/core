@@ -1,0 +1,5 @@
+name: "Test"
+
+server:
+  port: 1234
+  domain: "http://teamsconnect.local"
