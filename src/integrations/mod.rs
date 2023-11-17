@@ -1,9 +1,9 @@
 pub mod integrations;
-use std::collections::HashMap;
+
 use integrations::{IntegrationConfig};
 use std::fs;
 use std::path::Path;
-use std::io::Error as IOError;
+
 
 pub fn load_integrations() -> Vec<IntegrationConfig> {
     let integration_path = Path::new("integrations");
