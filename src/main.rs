@@ -1,12 +1,16 @@
 mod config;
 mod handlers;
+mod integrations;
 use actix_web::{App, HttpServer};
 use handlers::configure_handlers;
-use config::config::from_file;
+use integrations::load_integrations;
+use config::from_file;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
     let config = from_file("config/service.yaml").expect("Failed to load configuration");
+    let loaded_integrations = load_integrations();
+    println!("Loaded Integrations: {:?}", loaded_integrations);
     HttpServer::new(|| {
         App::new()
             .configure(configure_handlers)

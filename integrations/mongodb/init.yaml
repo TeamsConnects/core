@@ -1,0 +1,19 @@
+start_hook: PRE_START_UP
+name: MongoDB Container
+description: This integration starts a local mongodb container in which all chat data is stored.
+
+# image: optinal
+env:
+  username: "{{ directive.generate_username }}"
+  password: "{{ directive.generate_pw }}"
+  port: 27017
+
+container:
+  name: "mongodb"
+  image: "mongodb:latest"
+  options:
+    ports:
+      - "{{ env.port }}:{{ env.port }}"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME={{ env.username }}
+      - MONGO_INITDB_ROOT_PASSWORD={{ env.password }}
