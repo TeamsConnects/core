@@ -355,6 +355,7 @@ name = "core"
 version = "0.1.0"
 dependencies = [
  "actix-web",
+ "rand",
  "serde",
  "serde_json",
  "serde_yaml",

@@ -4,7 +4,7 @@ description: This integration starts a local mongodb container in which all chat
 
 # image: optinal
 env:
-  username: "{{ directive.generate_username }}"
+  username: "{{ directive.generate_username }}{{ directive.generate_pw }}"
   password: "{{ directive.generate_pw }}"
   port: 27017
 

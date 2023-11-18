@@ -1,19 +1,15 @@
-use serde::{Deserialize};
+use serde::Deserialize;
+use serde_yaml::Value;
 use std::collections::HashMap;
+
 #[derive(Debug, Deserialize)]
 pub struct IntegrationConfig {
     pub start_hook: StartHook,
     pub name: String,
-    pub env: HashMap<String, EnvValue>,
+    pub env: HashMap<String, Value>,
     pub description: String,
     pub image: Option<String>,
     pub container: ContainerConfig,
-}
-
-#[derive(Debug, Deserialize)]
-pub enum EnvValue {
-    StringValue(String),
-    IntValue(i32),
 }
 
 #[derive(Debug, Deserialize)]
@@ -35,6 +31,5 @@ pub struct ContainerOptions {
     #[serde(default)]
     pub ports: Vec<String>,
     #[serde(default)]
-    pub environment: HashMap<String, String>,
+    pub environment: Vec<String>,
 }
-
